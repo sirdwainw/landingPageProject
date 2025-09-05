@@ -1,0 +1,183 @@
+
+header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+    box-sizing: border-box; 
+    max-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;          
+  padding: 0rem 1rem;
+  background: rgba(210, 180, 140, 0.664);
+  z-index: 1000;    
+}
+
+
+.logo { flex: 0 0 auto; }
+.logo img {
+    max-height: 100px;   
+    height: 100px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px );
+   image-rendering: -webkit-optimize-contrast;
+}
+
+
+nav { flex: 1 1 auto; min-width: 0; }   
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.25rem;               
+  flex-wrap: nowrap;          
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  text-decoration: none;
+  color: #556b2f;             
+  font-weight: 600;
+}
+
+
+@media (max-width: 900px) {
+  .logo img { max-height: 64px; }
+  header { padding: 0.4rem 1rem; }
+  nav ul { gap: 1rem; }
+}
+@media (max-width: 700px) {
+  .logo img { max-height: 52px; }
+  nav ul { gap: 0.75rem; }
+  nav a { font-size: 0.95rem; }
+}
+@media (max-width: 520px) {
+  .logo img { max-height: 44px; }
+  nav ul { gap: 0.5rem; }
+  nav a { font-size: 0.9rem; letter-spacing: 0; }
+}
+
+
+:root{
+  --tan: tan;                     
+  --sage: #556b2f;               
+  --sage-rgb: 85, 107, 47;        
+  --ink: #1b501c;                   
+  --paper: #fff;
+}
+
+/* -------- Base / Typography -------- */
+*{ box-sizing: border-box; }
+html{ font-size: 16px; }
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--ink);
+  line-height: 1.6;
+  background: var(--paper);
+  /* padding-top set if header is fixed */
+}
+
+/* Headings */
+h1, h2, h3{ line-height: 1.2; }
+h2{ font-size: 1.75rem; font-weight: 700; margin: 0 0 0.5rem; }
+
+/* Links */
+a{ color: var(--sage); text-decoration: none; }
+a:hover{ color: rgba(var(--sage-rgb), 0.8); }
+
+/* -------- Header (Flexbox) -------- */
+header{
+  position: sticky; top: 0; z-index: 1000;
+  background: var(--tan);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.5rem 1.25rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.logo img{
+  height: 64px; width: auto; display: block;
+}
+
+
+nav ul{
+  list-style: none; display: flex; gap: 1.125rem; margin: 0; padding: 0;
+}
+nav a{
+  font-weight: 600; padding: 0.25rem 0.1rem; border-radius: 4px;
+}
+nav a:hover{
+  background: rgba(var(--sage-rgb), 0.08); /* rgb/rgba usage */
+}
+
+/* -------- Hero / Home (Grid layout) -------- */
+#home{
+  padding: 2rem 1.25rem;
+}
+#home .welcome p{ margin: 0.25rem 0; }
+#home .btn-cta{
+  display: inline-block; margin-top: 0.75rem;
+  padding: 0.6rem 1rem; border-radius: 999px;
+  background: var(--sage); color: var(--paper); font-weight: 700;
+  border: 2px solid var(--sage);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+#home .btn-cta:hover{
+  background: rgba(var(--sage-rgb), 0.9);
+  transform: translateY(-1px);
+}
+#home img{ max-width: 100%; height: auto; display: block; }
+
+/* Desktop grid (falls back to single column on mobile) */
+@media (min-width: 900px){
+  #home{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2rem;
+    align-items: center;
+  }
+}
+
+/* -------- Testimonials (Box model demo) -------- */
+.testimonials{
+  padding: 2rem 1.25rem;
+  background: #faf7f1;
+}
+.testimonials blockquote{
+  margin: 1rem 0;                 /* margin (box model) */
+  padding: 1rem;                  /* padding (box model) */
+  border: 1px solid #e5dccb;      /* border (box model) */
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* -------- Contact form cleanup -------- */
+#contact{ padding: 2rem 1.25rem; }
+#contact form p{ margin: 0.75rem 0; }
+input, textarea{
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  font: inherit;
+}
+
+/* -------- Footer -------- */
+footer{
+  padding: 1.25rem;
+  background: #f3efe7;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* -------- Responsive tweaks -------- */
+@media (max-width: 900px){
+  .logo img{ height: 56px; }
+  header{ padding: 0.5rem 1rem; }
+}
+
+@media (max-width: 600px){
+  .logo img{ height: 48px; }
+  nav ul{ gap: 0.75rem; }
+  nav a{ font-size: 0.95rem; }
+}
