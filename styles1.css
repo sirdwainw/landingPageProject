@@ -32,6 +32,11 @@ header {
   width: auto;
   filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.15));
   image-rendering: -webkit-optimize-contrast;
+  transition: transform var(--dur) var(--ease), filter var(--dur) var(--ease);
+}
+.logo img:hover {
+  transform: translateY(-2px) scale(1.03) rotate(-1deg);
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.18));
 }
 
 nav {
@@ -55,6 +60,25 @@ nav a {
   font-size: 2rem;
   line-height: 1;
   text-shadow: #444343da 1px 1px 2px;
+    position: relative;
+  transition: color var(--dur) var(--ease), text-shadow var(--dur) var(--ease);
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  height: 2px; width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+nav a:hover::after,
+nav a:focus-visible::after { transform: scaleX(1); }
+nav a:focus-visible {
+  outline: none;
+  text-shadow: 0 0 0; 
+  box-shadow: 0 2px 0 0 currentColor;
 }
 
 @media (max-width: 900px) {
@@ -98,14 +122,23 @@ nav a {
   --sage-rgb: 85, 107, 47;
   --ink: #1b501c;
   --paper: #fff;
+   --ease: cubic-bezier(.2,.8,.2,1);
+  --dur: 220ms;
 }
 
+
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
 * {
   box-sizing: border-box;
 }
 
 html {
   font-size: 16px;
+  scroll-behavior: smooth; 
 }
 
 body {
@@ -139,6 +172,7 @@ a:hover {
 #home {
   padding: 2.5rem 0;
 }
+
 
 #home .home-container {
   max-width: 1280px;
@@ -185,6 +219,16 @@ a:hover {
   border-radius: 12px;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
+#home .lisa img,
+.about-media img {
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transform-origin: center;
+}
+#home .lisa img:hover,
+.about-media img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,.12);
+}
 
 .welcome hr {
   border: none;;
@@ -196,6 +240,7 @@ a:hover {
 
 #home {
   background: #fbf7ef;
+  scroll-margin-top: 80px;
 }
 
 @media (max-width: 991px) {
@@ -228,6 +273,16 @@ a:hover {
   background: #fff;
   font-size: clamp(1.25rem, 1.2vw, 1.125rem);
 }
+.testimonials blockquote,
+.about-stats li {
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.testimonials blockquote:hover,
+.about-stats li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.10);
+  border-color: rgba(85,107,47,.35); /* sage-ish */
+}
 
 #contact {
   padding: 2rem 1.25rem;
@@ -249,7 +304,88 @@ textarea {
   border: 1px solid #d9d9d9;
   border-radius: 6px;
   font: inherit;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
+
+input:hover, textarea:hover {
+  border-color: rgba(var(--sage-rgb), .5);
+}
+input:focus-visible, textarea:focus-visible {
+  outline: none;
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(var(--sage-rgb), .18);
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  background: var(--sage);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  padding: .75rem 1.25rem;
+  border-radius: 8px;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background-color var(--dur) var(--ease);
+  box-shadow: 0 6px 12px rgba(0,0,0,.08);
+}
+input[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12);
+  background-color: #466026; 
+}
+input[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0,0,0,.10);
+}
+input[type="submit"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(var(--sage-rgb), .22);
+}
+/* Quick layout helpers used above */
+.form-card { background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,.06); }
+.form-card fieldset { margin:1rem 0; border:1px solid rgba(0,0,0,.06); padding:1rem; border-radius:10px; }
+.form-card legend { font-weight:700; padding:0 .5rem; }
+.form-card label { display:block; margin:.5rem 0 .25rem; }
+.form-card .inline { display:flex; align-items:center; gap:.5rem; margin-top:.25rem; }
+.form-card .grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.form-card .stack { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:.5rem 0; }
+.form-card .label { font-weight:600; margin-right:.5rem; }
+
+.form-card input[type="text"],
+.form-card input[type="email"],
+.form-card input[type="tel"],
+.form-card input[type="date"],
+.form-card input[type="number"],
+.form-card select,
+.form-card textarea {
+  width:100%;
+  padding:.7rem .8rem;
+  border:1px solid rgba(0,0,0,.15);
+  border-radius:8px;
+  background:#fff;
+}
+.form-status { min-height:1.25rem; margin:.5rem 0 0; font-size:.95rem; }
+.form-status.success { color:#1a7f37; }
+.form-status.error { color:#b22; }
+.form-status.info { color:#555; }
+
+
+
+.chip { 
+  display:inline-flex; align-items:center; gap:.4rem; 
+  border:1px solid rgba(0,0,0,.15); border-radius:999px; 
+  padding:.45rem .75rem; cursor:pointer; user-select:none;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.chip:hover { transform: translateY(-2px); box-shadow:0 8px 16px rgba(0,0,0,.08); }
+.chip input { accent-color: var(--sage, #557a33); }
+
+
+.hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+@media (max-width: 720px) {
+  .form-card .grid { grid-template-columns:1fr; }
+}
+
 
 footer {
   padding: 1.25rem;
@@ -257,6 +393,42 @@ footer {
   text-align: center;
   font-size: 1.25rem;
 }
+.thank-you {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.thank-you h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--sage, #557a33);
+}
+
+.thank-you p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.thank-you .btn {
+  display: inline-block;
+  padding: .75rem 1.25rem;
+  background: var(--sage, #557a33);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform var(--dur, 220ms) var(--ease, ease);
+}
+
+.thank-you .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,.1);
+}
+
+.hidden {
+  display: none !important;
+}
+
 
 #about {
   padding: 2rem 1.25rem;
@@ -323,4 +495,13 @@ footer {
   margin-top: 0.25rem;
   color: #555;
   font-weight: 600;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+:is(#home, #testimonials, #about, #contact) {
+  animation: fadeInUp 500ms var(--ease) both;
 }

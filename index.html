@@ -131,16 +131,174 @@
         <div class="container">
           <h2>Contact Us</h2>
 
-          <form action="#" method="post">
-            <label for="name">Name:</label><br />
-            <input type="text" id="name" name="name" required /><br /><br />
-            <label for="email">Email:</label><br />
-            <input type="email" id="email" name="email" required /><br /><br />
-            <label for="message">Message:</label><br />
-            <textarea id="message" name="message" rows="4" required></textarea
-            ><br /><br />
-            <input type="submit" value="Submit" />
-          </form>
+         
+<form id="catering-form" class="form-card" action="https://formspree.io/f/xblzlzpd" method="POST" novalidate>
+  <!-- Honeypot field (hidden from users) -->
+  <div class="hp" aria-hidden="true">
+    <label>Do not fill this out</label>
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+   </div>
+   <input type="hidden" name="_subject" id="_subject" value="New Catering Inquiry">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_redirect" value="127.0.0.1:3000/Week 3/landingPageProject/#thank-you">
+
+
+  <fieldset>
+    <legend>Contact Information</legend>
+
+    <label for="fullName">Full Name *</label>
+    <input id="fullName" name="fullName" type="text" required autocomplete="name" placeholder="Jane Smith">
+
+    <label for="email">Email *</label>
+    <input id="email" name="email" type="email" required autocomplete="email" placeholder="jane@example.com">
+
+    <label for="phone">Phone *</label>
+    <input id="phone" name="phone" type="tel" required inputmode="tel" autocomplete="tel"
+           placeholder="(555) 123-4567">
+  </fieldset>
+
+ 
+  <fieldset>
+    <legend>Event Details</legend>
+
+    <div class="grid">
+      <div>
+        <label for="eventDate">Event Date *</label>
+        <input id="eventDate" name="eventDate" type="date" required>
+        <label class="inline">
+          <input type="checkbox" name="dateFlexible" value="yes"> Date is flexible
+        </label>
+      </div>
+
+      <div>
+        <label for="guests">Guest Count *</label>
+        <input id="guests" name="guests" type="number" min="1" max="2000" step="1" required placeholder="e.g., 120">
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <label for="eventType">Event Type *</label>
+        <select id="eventType" name="eventType" required>
+          <option value="" selected disabled>Select one</option>
+          <option>Wedding</option>
+          <option>Birthday</option>
+          <option>Corporate</option>
+          <option>Graduation</option>
+          <option>Baby/Bridal Shower</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="budget">Estimated Budget</label>
+        <select id="budget" name="budget">
+          <option value="" selected disabled>Select range</option>
+          <option>&lt; $1,000</option>
+          <option>$1,000 – $2,500</option>
+          <option>$2,500 – $5,000</option>
+          <option>$5,000 – $10,000</option>
+          <option>$10,000+</option>
+        </select>
+      </div>
+    </div>
+
+    <label for="venue">Venue / Address (optional)</label>
+    <input id="venue" name="venue" type="text" autocomplete="street-address" placeholder="Venue name or address">
+
+    <div class="grid">
+      <div>
+        <label for="city">City *</label>
+        <input id="city" name="city" type="text" required autocomplete="address-level2">
+      </div>
+      <div>
+        <label for="zip">ZIP *</label>
+        <input id="zip" name="zip" type="text" required inputmode="numeric" autocomplete="postal-code" placeholder="12345">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Menu & Service Style</legend>
+
+    <div class="stack">
+      <span class="label">Preferred Service Style *</span>
+      <label class="chip"><input type="checkbox" name="serviceStyle" value="Buffet" required> Buffet</label>
+      <label class="chip"><input type="checkbox" name="serviceStyle" value="Plated"> Plated</label>
+      <label class="chip"><input type="checkbox" name="serviceStyle" value="Family Style"> Family Style</label>
+      <label class="chip"><input type="checkbox" name="serviceStyle" value="Cocktail/Appetizers"> Cocktail/Appetizers</label>
+    </div>
+
+    <div class="stack">
+      <span class="label">Dietary Needs</span>
+      <label class="chip"><input type="checkbox" name="diet" value="Vegetarian"> Vegetarian</label>
+      <label class="chip"><input type="checkbox" name="diet" value="Vegan"> Vegan</label>
+      <label class="chip"><input type="checkbox" name="diet" value="Gluten-Free"> Gluten-Free</label>
+      <label class="chip"><input type="checkbox" name="diet" value="Halal"> Halal</label>
+      <label class="chip"><input type="checkbox" name="diet" value="Kosher"> Kosher</label>
+      <label class="chip"><input type="checkbox" name="diet" value="Allergies"> Allergies</label>
+      <input type="text" name="dietOther" placeholder="Allergy/other details (optional)">
+    </div>
+
+    <div class="stack">
+      <span class="label">Additional Services</span>
+      <label class="chip"><input type="checkbox" name="services" value="Servers"> Servers</label>
+      <label class="chip"><input type="checkbox" name="services" value="Bartenders"> Bartenders</label>
+      <label class="chip"><input type="checkbox" name="services" value="Tableware"> Tableware</label>
+      <label class="chip"><input type="checkbox" name="services" value="Linens"> Linens</label>
+      <label class="chip"><input type="checkbox" name="services" value="Setup/Cleanup"> Setup/Cleanup</label>
+      <label class="chip"><input type="checkbox" name="services" value="Cake/Desserts"> Cake/Desserts</label>
+    </div>
+  </fieldset>
+
+  
+  <details>
+    <summary>Optional: Cuisine interests, bar options, and notes</summary>
+
+    <div class="stack">
+      <span class="label">Cuisine Interests</span>
+      <label class="chip"><input type="checkbox" name="cuisine" value="American"> American</label>
+      <label class="chip"><input type="checkbox" name="cuisine" value="Italian"> Italian</label>
+      <label class="chip"><input type="checkbox" name="cuisine" value="BBQ"> BBQ</label>
+      <label class="chip"><input type="checkbox" name="cuisine" value="Mexican/Tex-Mex"> Mexican/Tex-Mex</label>
+      <label class="chip"><input type="checkbox" name="cuisine" value="Mediterranean"> Mediterranean</label>
+      <label class="chip"><input type="checkbox" name="cuisine" value="Asian Fusion"> Asian Fusion</label>
+      <input type="text" name="cuisineOther" placeholder="Other cuisine (optional)">
+    </div>
+
+    <div class="stack">
+      <span class="label">Bar Service</span>
+      <label class="chip"><input type="radio" name="bar" value="None"> None</label>
+      <label class="chip"><input type="radio" name="bar" value="Beer/Wine"> Beer/Wine</label>
+      <label class="chip"><input type="radio" name="bar" value="Full Bar"> Full Bar</label>
+    </div>
+
+    <label for="message">Notes / Special Requests</label>
+    <textarea id="message" name="message" rows="4" placeholder="Theme, timeline, must-have dishes, etc."></textarea>
+
+    <label for="ref">How did you hear about us?</label>
+    <select id="ref" name="ref">
+      <option value="" selected disabled>Select one</option>
+      <option>Google</option>
+      <option>Social Media</option>
+      <option>Referral</option>
+      <option>Venue Partner</option>
+      <option>Other</option>
+    </select>
+  </details>
+
+ 
+  <label class="inline">
+    <input type="checkbox" name="agree" required>
+    I agree to be contacted about my event. *
+  </label>
+
+  <input type="hidden" name="formName" value="Catering Lead">
+  <p id="form-status" class="form-status" aria-live="polite"></p>
+  <input type="submit" value="Request My Quote">
+  <p class="form-note">We typically respond within two business days.</p>
+</form>
+
         </div>
       </section>
     </main>
@@ -167,5 +325,90 @@
         reserved.
       </p>
     </footer>
+
+<section id="thank-you" class="thank-you hidden">
+  <div class="container">
+    <h2>Thank You!</h2>
+    <p>We’ve received your catering request. Our team will be in touch within one business day to confirm details.</p>
+    <a href="#home" class="btn" id="backHome">Back to Home</a>
+  </div>
+</section>
+
+    <script>
+  (function () {
+    const form = document.getElementById('catering-form');
+    const statusEl = document.getElementById('form-status');
+    const submitBtn = form.querySelector('input[type="submit"]');
+    const subjectEl = document.getElementById('_subject');
+
+    function setStatus(message, type = 'info') {
+      if (!statusEl) return; // guard
+      statusEl.textContent = message;
+      statusEl.className = 'form-status ' + type;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Build subject
+      const name = form.fullName?.value?.trim() || 'New Lead';
+      const date = form.eventDate?.value || 'TBD';
+      const guests = form.guests?.value || '—';
+      if (subjectEl) subjectEl.value = `Catering Inquiry – ${name} – ${date} – ${guests} guests`;
+
+      // Honeypot: if bot filled it, silently stop
+      if (form.company && form.company.value) return;
+
+      // Disable while sending
+      submitBtn.disabled = true;
+      submitBtn.value = 'Sending…';
+      setStatus('Sending your request…', 'info');
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          setStatus('', 'success'); // clear message (since we swap views)
+          document.getElementById('contact').classList.add('hidden');
+          document.getElementById('thank-you').classList.remove('hidden');
+        } else {
+          const out = await res.json().catch(() => ({}));
+          const msg = out?.errors ? out.errors.map(e => e.message).join(' ') : 'Something went wrong. Please try again or call us.';
+          setStatus(msg, 'error');
+        }
+      } catch (err) {
+        setStatus('Network error. Please check your connection and try again.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.value = 'Request My Quote';
+      }
+    });
+  })();
+</script>
+<script>
+  (function () {
+    const back = document.getElementById('backHome');
+    if (!back) return;
+    back.addEventListener('click', (e) => {
+      e.preventDefault();
+      // show the main page again
+      document.getElementById('thank-you').classList.add('hidden');
+      document.getElementById('contact').classList.remove('hidden'); // or show whatever section you hid
+      // scroll to the hero/top
+      const home = document.getElementById('home');
+      if (home) home.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // update URL fragment (optional)
+      history.replaceState(null, '', '#home');
+    });
+  })();
+</script>
+
+
   </body>
 </html>
